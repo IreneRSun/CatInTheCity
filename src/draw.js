@@ -1,40 +1,49 @@
 // draw clock
+
+// add numbers to the clock
 function addClockElements(container, end) {
     for (i = 1; i < end; ++i) {
         var element;
         if (i < 10) { element = "0" + i; } else { element = i; }
-        container.innerHTML.append(`<li>${element}</li>`);
+        container.innerHTML += `<li>${element}</li>`;
     }
 }
 
-function placeClockElements(elements, degree) {
-
+// position the clock elements
+function placeClockElements(elements, degree, radius) {
+    elements.forEach(function(element, index) {
+        const style = `
+        transform: rotateZ(${index * degree}deg) translateX(${radius}px);
+        `
+        element.style.cssText = style;
+    });
 }
 
+// set the clock time
 function setTime() {
-    // get current date
     const date = new Date();
     const month = curr_date.getMonth();
     const day = curr_date.getDate();
     const hour = curr_date.getHours();
 }
 
+// draw the clock
 function drawClock() {
     // add month elements to clock
-    const month_container = document.querySelector("#clock #inner #month");
+    const month_container = document.querySelector("#clock #inner #months");
     addClockElements(month_container, 13);
-    const months = document.querySelectorAll("#clock #inner #month li");
-    placeClockElements(months, 360/12);
+    const months = document.querySelectorAll("#clock #inner #months li");
+    placeClockElements(months, 360/12, 90);
     // add day elements to clock
-    const day_container = document.querySelector("#clock #inner #day");
+    const day_container = document.querySelector("#clock #inner #days");
     addClockElements(day_container, 32);
-    const days = document.querySelectorAll("#clock #inner #day li");
-    placeClockElements(days, 360/31);
+    const days = document.querySelectorAll("#clock #inner #days li");
+    placeClockElements(days, 360/31, 120);
     // add hour elements to clock
-    const hour_container = document.querySelector("#clock #inner #hour");
+    const hour_container = document.querySelector("#clock #inner #hours");
     addClockElements(hour_container, 25);
-    const hours = document.querySelectorAll("#clock #inner #hour li");
-    placeClockElements(hours, 360/24);
+    const hours = document.querySelectorAll("#clock #inner #hours li");
+    placeClockElements(hours, 360/24, 150);
 
 }
 
@@ -51,3 +60,5 @@ function drawResetElements() {
         datalist.innerHTML.append(`<option value = ${element}>`);
     }
 }
+
+drawClock();

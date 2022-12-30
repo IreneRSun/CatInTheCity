@@ -3,16 +3,19 @@ var curr_date = new Date();
 
 // handle right key press
 const cat_animation = document.getElementById("cat");
+const newspaper = document.getElementById("newspaper");
 
 document.addEventListener("keydown", function(event) {
     if (event.key == "ArrowRight" && active_root) {
         cat_animation.style.animationPlayState = "running";
+        newspaper.style.visibility = "hidden";
     }
 });
 
 document.addEventListener("keyup", function(event) {
     if (event.key == "ArrowRight" && active_root) {
         cat_animation.style.animationPlayState = "paused";
+        newspaper.style.visibility = "visible";
     }
 });
 

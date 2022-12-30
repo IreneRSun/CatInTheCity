@@ -75,7 +75,7 @@ body {
     /* animation properties */
     background: url("assets/Cat_Animation.png");
     animation-name: cat_sprite;
-    animation-duration: 2s;
+    animation-duration: 1.5s;
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-play-state: paused;
@@ -86,11 +86,18 @@ body {
     display: none;
 }
 
-#newspaper {
+#news_lbl {
     position: relative;
+    width: 0px;
+    height: 0px;
+    transform: translateY(500px);
+}
+
+#newspaper {
+    position: absolute;
     width: auto;
     height: 50px;
-    transform: translateY(500px);
+    visibility: visible;
 }
 
 #newspaper:hover {
@@ -122,6 +129,21 @@ body {
     border: 2px solid burlywood;
 }
 
+#clock #inner ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+}
+
+#clock #inner ul li {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /* date setter/resetter */
 #set {
     position: relative;
@@ -129,7 +151,9 @@ body {
     height: 50px;
     transform: translateY(250px);
     margin-right: 20px;
-    background: radial-gradient(rgba(255,229,164,1) 5%, rgba(184,134,11,1) 100%);
+    background: whitesmoke;
+    border: whitesmoke;
+    box-shadow: 10px 10px 10px 10px whitesmoke, 10px 10px 30px 30px white;
 }
 
 #reset {
@@ -137,5 +161,7 @@ body {
     width: 100px;
     height: 50px;
     transform: translateY(250px);
-    background: radial-gradient(rgba(255,229,164,1) 5%, rgba(184,134,11,1) 100%);
+    background: whitesmoke;
+    border: whitesmoke;
+    box-shadow: 10px 10px 10px 10px whitesmoke, 10px 10px 30px 30px white;
 }
