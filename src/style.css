@@ -1,0 +1,141 @@
+body {
+    background-color: black;
+}
+
+/* main frame */
+#root {
+    display: flex;
+    width: 1300px;
+    height: 600px;
+    background-color: lightcyan;
+    background-image: url(assets/City.png);
+    background-size: 100% 100%;
+    transition: 1s;
+}
+
+#root.inactive {
+    filter: blur(10px);
+    pointer-events: none;
+    user-select: none;
+    transition: 3s;
+}
+
+/* general popup frames */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    border-radius: 5%;
+    filter: blur(0.5px);
+    background: white;
+    color: burlywood;
+    font-family: 'Times New Roman', Times, serif;
+    box-shadow: 10px 10px 120px 90px white, 10px 10px 60px 30px rgb(237, 237, 237);
+    visibility: hidden;
+    opacity: 0;
+    transition: 1s;
+}
+
+.popup.active {
+    visibility: visible;
+    opacity: 1;
+    transition: 3s;
+}
+
+.popup .exit_btn {
+    border-color: white;
+    background-color: burlywood;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* cat animation code*/
+@keyframes cat_sprite {
+    from {
+        background-position-x: 400px;
+        background-position-y: 2400px;
+    }
+    to {
+        background-position-x: 400px;
+        background-position-y: 0px;
+    }
+}
+
+/* cat object container */
+#cat {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 200px;
+    transform: translateY(400px);
+
+    /* animation properties */
+    background: url("assets/Cat_Animation.png");
+    animation-name: cat_sprite;
+    animation-duration: 2s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+}
+
+/* newspaper button object */
+#news_btn {
+    display: none;
+}
+
+#newspaper {
+    position: relative;
+    width: auto;
+    height: 50px;
+    transform: translateY(500px);
+}
+
+#newspaper:hover {
+    top: -10px;
+}
+
+/* clock object container */
+#clock {
+    position: relative;
+    display: block;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    box-shadow: -10px 10px 5px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(200deg, rgba(255,229,164,1) 5%, rgba(184,134,11,1) 100%);
+    transform: translateY(30px);
+}
+
+#clock #inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(252,245,226,1) 0%, rgba(43,32,5,1) 100%);
+    border: 2px solid burlywood;
+}
+
+/* date setter/resetter */
+#set {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    transform: translateY(250px);
+    margin-right: 20px;
+    background: radial-gradient(rgba(255,229,164,1) 5%, rgba(184,134,11,1) 100%);
+}
+
+#reset {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    transform: translateY(250px);
+    background: radial-gradient(rgba(255,229,164,1) 5%, rgba(184,134,11,1) 100%);
+}

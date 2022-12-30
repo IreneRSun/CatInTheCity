@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <!-- metadata -->
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+        <title>Cat in the City</title>
+        <link rel = "stylesheet" type = "text/css" href = "style.css">
+    </head>
+
+    <!-- content -->
+    <body>
+
+        <div id = "root">
+
+            <!-- cat animation -->
+            <div id = "cat"></div>
+
+            <!-- news button -->
+            <input type = "button" id = "news_btn">
+            <label for = "news_btn">
+                <img src = "assets/Newspaper_Icon.png" id = "newspaper" />
+            </label>
+
+            <!-- giant clock -->
+            <div id = "clock">
+                <div id = "inner">
+                    <ol id = "months"></ol>
+                    <ol id = "days"></ol>
+                    <ol id = "hours"></ol>
+                </div>
+            </div>
+
+            <!-- date setter -->
+            <datalist id = "available_dates"></datalist>
+            <button id = "set">Set</button>
+
+            <!-- time resetter -->
+            <button id = "reset">Reset</button>
+
+            <!-- additional html & css elements -->
+            <script src = "draw.js"></script>
+
+        </div>
+        
+        <!-- news popup -->
+        <div class = "popup" id = "news">
+            <h1>NEWS</h1>
+            <h3>Date</h3>
+            <p id = "date"></p>
+            <h3 id>Weather</h3>
+            <p id = "weather"></p>
+            <h3>Current Trends</h3>
+            <p id = "trends"></p>
+            <button class = "exit_btn" for = "news_btn">Put Down</button>
+        </div>
+
+        <!-- js script for interactivity -->
+        <script src = "webpage_logic.js"></script>
+        
+    </body>
+
+</html>
