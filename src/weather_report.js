@@ -20,7 +20,8 @@ class WeatherReport {
 
     // fetch the weather info for the user's location
     fetch_weather_data() {
-        const fetch = require("node_fetch")
+        const fetch = require("node_fetch");
+        const cheerio = require("cheerio");
         const api = ""
         
     }

@@ -59,7 +59,7 @@ body {
     }
     to {
         background-position-x: 400px;
-        background-position-y: 0px;
+        background-position-y: 0;
     }
 }
 
@@ -88,8 +88,8 @@ body {
 
 #news_lbl {
     position: relative;
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
     transform: translateY(500px);
 }
 
@@ -112,7 +112,7 @@ body {
     height: 500px;
     border-radius: 50%;
     box-shadow: -10px 10px 5px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(200deg, rgba(255,229,164,1) 5%, rgba(184,134,11,1) 100%);
+    background: linear-gradient(200deg, rgb(237, 226, 197) 5%, rgb(110, 81, 6) 100%);
     transform: translateY(30px);
 }
 
@@ -126,22 +126,45 @@ body {
     height: 450px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(252,245,226,1) 0%, rgba(43,32,5,1) 100%);
-    border: 2px solid burlywood;
+    border: 2px solid rgb(177, 163, 145);
 }
 
 #clock #inner ul {
     position: absolute;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    width: 30px;
+    height: 30px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    margin: -30px 0 0 -30px;
     list-style: none;
 }
 
 #clock #inner ul li {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 30px;
+    color: black;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 24px;
+    border: 1px solid;
+    transition: 1s linear;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 3px 0px 5px white, 0px 3px 5px white, 5px 0px 5px whitesmoke, 0px 5px 5px whitesmoke;
+      }
+      to {
+        text-shadow: 5px 0px 5px whitesmoke, 0px 5px 5px whitesmoke;
+      }
+}
+
+#clock #inner ul li.active {
+    animation: glow 1s ease-in-out infinite alternate;
+    transition: 1s linear;
 }
 
 /* date setter/resetter */

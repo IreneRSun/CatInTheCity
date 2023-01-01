@@ -12,19 +12,16 @@ function addClockElements(container, end) {
 // position the clock elements
 function placeClockElements(elements, degree, radius) {
     elements.forEach(function(element, index) {
+        // place element
         const style = `
         transform: rotateZ(${index * degree}deg) translateX(${radius}px);
         `
         element.style.cssText = style;
+        // activate if first element
+        if (index == 0) {
+            element.classList.add("active");
+        }
     });
-}
-
-// set the clock time
-function setTime() {
-    const date = new Date();
-    const month = curr_date.getMonth();
-    const day = curr_date.getDate();
-    const hour = curr_date.getHours();
 }
 
 // draw the clock
@@ -33,18 +30,17 @@ function drawClock() {
     const month_container = document.querySelector("#clock #inner #months");
     addClockElements(month_container, 13);
     const months = document.querySelectorAll("#clock #inner #months li");
-    placeClockElements(months, 360/12, 90);
+    placeClockElements(months, 360/12, 120);
     // add day elements to clock
     const day_container = document.querySelector("#clock #inner #days");
     addClockElements(day_container, 32);
     const days = document.querySelectorAll("#clock #inner #days li");
-    placeClockElements(days, 360/31, 120);
+    placeClockElements(days, 360/31, 150);
     // add hour elements to clock
     const hour_container = document.querySelector("#clock #inner #hours");
     addClockElements(hour_container, 25);
     const hours = document.querySelectorAll("#clock #inner #hours li");
-    placeClockElements(hours, 360/24, 150);
-
+    placeClockElements(hours, 360/24, 180);
 }
 
 // add elements to the date setter datalist

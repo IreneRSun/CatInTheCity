@@ -1,5 +1,43 @@
 var active_root = true;
-var curr_date = new Date();
+
+const test = document.querySelector("#clock #inner #months li.active");
+console.log(test.style.cssText);
+
+// handle clock time
+function setClock(new_month, new_day, new_hour) {
+    const months = document.querySelectorAll("#clock #inner #months li");
+    const days = document.querySelectorAll("#clock #inner #days li");
+    const hours = document.querySelectorAll("#clock #inner #hours li");
+
+    const month = Number(document.querySelector("#clock #inner #months li.active"));
+    const day = Number(document.querySelector("#clock #inner #days li.active"));
+    const hour = Number(document.querySelector("#clock #inner #hours li.active"));
+
+}
+
+function incrementClock() {
+    const months = document.querySelectorAll("#clock #inner #months li");
+    const days = document.querySelectorAll("#clock #inner #days li");
+    const hours = document.querySelectorAll("#clock #inner #hours li");
+
+    const month = document.querySelector("#clock #inner #months li.active");
+    const day = document.querySelector("#clock #inner #days li.active");
+    const hour = document.querySelector("#clock #inner #hours li.active");
+
+
+
+    // increment hour
+    const style = ``;
+    // increment day
+    if (hour == 24) {
+
+    }
+    // increment month
+
+}
+
+// set clock to current date
+
 
 // handle right key press
 const cat_animation = document.getElementById("cat");
@@ -44,8 +82,8 @@ const news_popup = document.querySelector("#news.popup");
 const news_close = document.querySelector("#news.popup .exit_btn");
 
 news_btn.addEventListener("click", function() {
-    const pg_sound = new Audio("assets/page_flip.mp3");
-    pg_sound.play();
+    const sound = new Audio("assets/page_flip.mp3");
+    sound.play();
     openPopup(news_popup);
 });
 
