@@ -1,45 +1,10 @@
 var active_root = true;
-
-const test = document.querySelector("#clock #inner #months li.active");
-console.log(test.style.cssText);
-
-// handle clock time
-function setClock(new_month, new_day, new_hour) {
-    const months = document.querySelectorAll("#clock #inner #months li");
-    const days = document.querySelectorAll("#clock #inner #days li");
-    const hours = document.querySelectorAll("#clock #inner #hours li");
-
-    const month = Number(document.querySelector("#clock #inner #months li.active"));
-    const day = Number(document.querySelector("#clock #inner #days li.active"));
-    const hour = Number(document.querySelector("#clock #inner #hours li.active"));
-
-}
-
-function incrementClock() {
-    const months = document.querySelectorAll("#clock #inner #months li");
-    const days = document.querySelectorAll("#clock #inner #days li");
-    const hours = document.querySelectorAll("#clock #inner #hours li");
-
-    const month = document.querySelector("#clock #inner #months li.active");
-    const day = document.querySelector("#clock #inner #days li.active");
-    const hour = document.querySelector("#clock #inner #hours li.active");
-
-
-
-    // increment hour
-    const style = ``;
-    // increment day
-    if (hour == 24) {
-
-    }
-    // increment month
-
-}
-
-// set clock to current date
-
+const real_date = new Date();
+var timer = null;
+var time;
 
 // handle right key press
+const clock = new Clock();
 const cat_animation = document.getElementById("cat");
 const newspaper = document.getElementById("newspaper");
 
@@ -47,6 +12,11 @@ document.addEventListener("keydown", function(event) {
     if (event.key == "ArrowRight" && active_root) {
         cat_animation.style.animationPlayState = "running";
         newspaper.style.visibility = "hidden";
+        time = new Date();
+        if (timer == null || (time.getTime() - timer.getTime()) >= 1000) {
+            clock.incrementTime();
+            timer = new Date();
+        }
     }
 });
 

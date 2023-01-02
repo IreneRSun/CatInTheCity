@@ -150,7 +150,7 @@ body {
     font-family:'Times New Roman', Times, serif;
     font-size: 24px;
     border: 1px solid;
-    transition: 1s linear;
+    transition: 0.5s linear;
 }
 
 @keyframes glow {

@@ -14,7 +14,7 @@ class WeatherReport {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition, handleError);
         } else {
-          console.error("Geolocation is not supported by this browser.");
+          console.error("Geolocation not supported on this browser");
         }
     }
 
@@ -22,7 +22,14 @@ class WeatherReport {
     fetch_weather_data() {
         const fetch = require("node_fetch");
         const cheerio = require("cheerio");
-        const api = ""
+        const url = "http://api.weatherapi.com/v1";
+        const key = "073e079ab3a74f10a1010601222512";
+
+        fetch(api).then(
+          (response) => response.text()
+        ).then(
+          
+        );
         
     }
 
