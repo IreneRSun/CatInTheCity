@@ -7,38 +7,35 @@ class Clock{
         this.days = document.querySelectorAll("#clock #inner #days li");
         this.hours = document.querySelectorAll("#clock #inner #hours li");
 
-        // initial month, day, and hour
-        this.head = [
-            this.months[0], 
-            this.days[0], 
-            this.hours[0]
-        ];
-
         // set clock to current date
         this.date = new Date();
+        this.date.setMonth(0);
+        this.date.setDate(1);
         this.date.setHours(0);
-        this.setDate(this.date.getMonth(), this.date.getDate(), 0);
+        this.setDate(new Date().getMonth(), new Date().getDate(), 0);
     }
 
     // increments elements of the clock (either months, days, or hours)
-    increment(elements, head) {
+    increment(elements, incrementation) {
+        var active_shift = false;
         // increment each of the elements by one
         elements.forEach(function(element, index) {
             // get tranform property of next sibling
             var next;
-            if (index != elements.length - 1) {
-                next = elements[index + 1];
+            if (index < elements.length - incrementation) {
+                next = elements[index + incrementation];
             } else {
-                next = elements[0];
+                next = elements[incrementation + index - elements.length];
             }
             const transform = getComputedStyle(next).getPropertyValue("transform");
             // adjust element's transform property
             const new_style = `transform: ${transform};`
             element.style.cssText = new_style;
             // adjust active state of elements as necessary
-            if (next.classList.contains("active")) {
+            if (next.classList.contains("active") && !active_shift) {
                 next.classList.remove("active");
                 element.classList.add("active");
+                active_shift = true;
             }
         });
     }
@@ -51,18 +48,27 @@ class Clock{
         var hour_increment = hour - this.date.getHours();
 
         // change the current date of the clock
-        if (month_increment > 0) {
-            this.increment(this.months, this.head[0]);
+        if (month_increment != 0) {
+            if (month_increment < 0) {
+                month_increment += 12;
+            }
+            this.increment(this.months, month_increment);
             this.date.setMonth(month);
         }
 
-        if (day_increment > 0) {
-            this.increment(this.days, this.head[1]);
+        if (day_increment != 0) {
+            if (day_increment < 0) {
+                day_increment += 31;
+            }
+            this.increment(this.days, day_increment);
             this.date.setDate(day);
         }
 
-        if (hour_increment > 0) {
-            this.increment(this.hours, this.head[2]);
+        if (hour_increment != 0) {
+            if (hour_increment < 0) {
+                hour_increment += 24;
+            }
+            this.increment(this.hours, hour_increment);
             this.date.setHours(hour);
         }
         

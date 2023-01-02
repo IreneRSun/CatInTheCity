@@ -1,7 +1,6 @@
 var active_root = true;
 const real_date = new Date();
 var timer = null;
-var time;
 
 // handle right key press
 const clock = new Clock();
@@ -12,8 +11,7 @@ document.addEventListener("keydown", function(event) {
     if (event.key == "ArrowRight" && active_root) {
         cat_animation.style.animationPlayState = "running";
         newspaper.style.visibility = "hidden";
-        time = new Date();
-        if (timer == null || (time.getTime() - timer.getTime()) >= 1000) {
+        if (timer == null || ( new Date().getTime() - timer.getTime()) >= 500) {
             clock.incrementTime();
             timer = new Date();
         }
