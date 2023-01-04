@@ -1,6 +1,7 @@
-class Clock{
+class Time{
 
-    // constructor, initializes Date object
+    // constructor
+    // handles webpage's time-related events
     constructor() {
         // month, day, and hour elements of clock
         this.months = document.querySelectorAll("#clock #inner #months li");
@@ -40,7 +41,7 @@ class Clock{
         });
     }
 
-    // sets the current date
+    // sets the current date of the clock
     setDate(month, day, hour) {
         // determine how much incrementation is necessary
         var month_increment = month - this.date.getMonth();
@@ -89,4 +90,12 @@ class Clock{
         this.setDate(new_month, new_day, new_hour);
     }
 
+    // gets the current date on the clock
+    getMonth() {
+        return this.date.getMonth();
+    }
+
+    getDay() {
+        return this.date.getDate();
+    }
 }

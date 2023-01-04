@@ -1,4 +1,4 @@
-// draw clock
+// draws elements of the webpage
 
 // add numbers to the clock
 function addClockElements(container, end) {

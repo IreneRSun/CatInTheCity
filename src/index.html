@@ -19,12 +19,6 @@
             <!-- cat animation -->
             <div id = "cat"></div>
 
-            <!-- news button -->
-            <input type = "button" id = "news_btn">
-            <label id = "news_lbl" for = "news_btn">
-                <img src = "assets/Newspaper_Icon.png" id = "newspaper" />
-            </label>
-
             <!-- giant clock -->
             <div id = "clock">
                 <div id = "inner">
@@ -34,16 +28,59 @@
                 </div>
             </div>
 
-            <!-- date setter
-            <datalist id = "available_dates"></datalist>
-            <button id = "set">Set</button>  -->
+            <!-- dropdown menu -->
+            <div class = "menu">
+                <!-- menu button -->
+                <button class = "menu_btn">Menu</button>
 
-            <!-- time resetter
-            <button id = "reset">Reset</button> -->
+                <!-- menu content -->
+                <div class = "menu_content">
+
+                    <!-- instructions button -->
+                    <input type = "button" class = "popup_btn" id = "instructions_btn">
+                    <label id = "instructions_lbl" for = "instructions_btn">
+                        <img src = "assets/Manual_Icon.png" class = "popup_img" id = "manual" />
+                    </label>
+
+                    <!-- news button -->
+                    <input type = "button" class = "popup_btn" id = "news_btn">
+                    <label id = "news_lbl" for = "news_btn">
+                        <img src = "assets/Newspaper_Icon.png" class = "popup_img" id = "newspaper" />
+                    </label>
+
+                    <!-- time-setter button -->
+                    <input type = "button" class = "popup_btn" id = "timesetter_btn">
+                    <label id = "timesetter_lbl" for = "timesetter_btn">
+                        <img src = "assets/Hourglass_Icon.png" class = "popup_img" id = "hourglass" />
+                    </label>
+
+                </div>
+            </div>
 
             <!-- additional html & css elements -->
             <script src = "draw.js"></script>
 
+        </div>
+
+        <!-- instructions popup -->
+        <div class = "popup" id = "instructions">
+            <h1>Instructions</h1>
+            <h3>How To Play</h3>
+            <p>
+                Hold the right arrow key to slowly pass a week on the clock and watch as the surroundings change to reflect the time on the clock.
+                The clock displays the time by the month, day, and hour, from left to right respectively.
+            </p>
+            <h3>Time Adjustment</h3>
+            <p>
+                Time is incremented automatically as you press the right arrow key.
+                To set the date to a desired day in the week, use their respective menu options.
+            </p>
+            <h3>Weather and Trend Information</h3>
+            <p>
+                The webpage displays the weather information of the clock's current time automatically.
+                For more specific weather information and information on trends, press the newspaper icon under the menu options.
+            </p>
+            <button class = "exit_btn" for = "instructions_btn">Close</button>
         </div>
         
         <!-- news popup -->
@@ -53,13 +90,22 @@
             <p id = "date"></p>
             <h3 id>Weather</h3>
             <p id = "weather"></p>
-            <h3>Current Trends</h3>
-            <p id = "trends"></p>
+            <div id = "trends">
+                <h3>Current World Trending</h3>
+                <p id = "world_trends"></p>
+                <h3>Current Trending in Your Location</h3>
+            </div>
             <button class = "exit_btn" for = "news_btn">Put Down</button>
         </div>
 
+        <!-- time-setter popup -->
+        <div class = "popup" id = "timesetter">
+            <h3>Set The Time</h3>
+            <button class = "exit_btn" for = "timesetter_btn">Close</button>
+        </div>
+
         <!-- js script for interactivity -->
-        <script src = "clock.js"></script>
+        <script src = "time.js"></script>
         <script src = "webpage_logic.js"></script>
         
     </body>

@@ -5,8 +5,12 @@ class WeatherReport {
     // constructs a weather report of the weather 
     // containing weather info for <num_days> days
     constructor() {
-        this.date = Date();
-        this.weather = null;
+        this.weather = new Map();
+        for (i = 0; i < 7; ++i) {
+          const date = new Date();
+          date.setDate(date.getDate() + 1);
+          this.weather.set([date.getMonth(), date.getDay()], null);
+        }
     }
 
     // gets current location of user
@@ -25,11 +29,14 @@ class WeatherReport {
         const url = "http://api.weatherapi.com/v1";
         const key = "073e079ab3a74f10a1010601222512";
 
-        fetch(api).then(
-          (response) => response.text()
-        ).then(
-          
-        );
+        const getRawData = (URL) => {
+          return fetch(URL)
+             .then((response) => response.text())
+             .then((data) => {
+                return data;
+             });
+            };
+
         
     }
 

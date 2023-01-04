@@ -27,15 +27,38 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
-    border-radius: 5%;
     filter: blur(0.5px);
     background: white;
     color: burlywood;
+    text-align: center;
     font-family: 'Times New Roman', Times, serif;
-    box-shadow: 10px 10px 120px 90px white, 10px 10px 60px 30px rgb(237, 237, 237);
     visibility: hidden;
     opacity: 0;
     transition: 1s;
+}
+
+/* popup buttons and labels */
+.popup_btn {
+    display: none;
+}
+
+.popup_lbl {
+    position: relative;
+    width: 0;
+    height: 0;
+}
+
+.popup_img {
+    position: relative;
+    display: block;
+    width: auto;
+    height: 50px;
+    margin: 20px 0 20px 0;
+    cursor: pointer;
+}
+
+.popup_img:hover {
+    top: -10px;
 }
 
 .popup.active {
@@ -81,29 +104,6 @@ body {
     animation-play-state: paused;
 }
 
-/* newspaper button object */
-#news_btn {
-    display: none;
-}
-
-#news_lbl {
-    position: relative;
-    width: 0;
-    height: 0;
-    transform: translateY(500px);
-}
-
-#newspaper {
-    position: absolute;
-    width: auto;
-    height: 50px;
-    visibility: visible;
-}
-
-#newspaper:hover {
-    top: -10px;
-}
-
 /* clock object container */
 #clock {
     position: relative;
@@ -129,6 +129,7 @@ body {
     border: 2px solid rgb(177, 163, 145);
 }
 
+/* clock datetime elements */
 #clock #inner ul {
     position: absolute;
     margin: 0;
@@ -167,24 +168,43 @@ body {
     transition: 0.2s linear;
 }
 
-/* date setter/resetter */
-#set {
-    position: relative;
-    width: 100px;
-    height: 50px;
-    transform: translateY(250px);
-    margin-right: 20px;
-    background: whitesmoke;
-    border: whitesmoke;
-    box-shadow: 10px 10px 10px 10px whitesmoke, 10px 10px 30px 30px white;
+/* menu object */
+.menu {
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    display: inline-block;
 }
 
-#reset {
-    position: relative;
-    width: 100px;
-    height: 50px;
-    transform: translateY(250px);
-    background: whitesmoke;
-    border: whitesmoke;
-    box-shadow: 10px 10px 10px 10px whitesmoke, 10px 10px 30px 30px white;
+.menu_btn {
+    background-color: rgb(65, 9, 9);
+    border: 5px solid darkgoldenrod;
+    color: rgb(152, 146, 132);
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 10%;
+    cursor: pointer;
+}
+
+.menu_content {
+    position: absolute;
+    display: none;
+}
+
+.menu:hover .menu_content {
+    display: block;
+}
+
+/* news popup object */
+#news {
+    box-shadow: 10px 10px 120px 90px white, 10px 10px 60px 30px rgb(237, 237, 237);
+    border-radius: 5%;
+}
+
+#instructions {
+    border-color: darkgoldenrod;
+    border-style: groove;
+}
+
+#timesetter {
+    box-shadow: 10px 10px 10px black; 
 }
