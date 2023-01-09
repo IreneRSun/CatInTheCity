@@ -1,9 +1,27 @@
-var active_root = true;
 const real_date = new Date();
+var latitude = null;
+var longitude = null;
+var active_root = true;
 var timer = null;
 
+// get user location
+function getLoc(position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+}
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(getLoc);
+} else {
+    alert("Please allow geolocation on this browser");
+}
+
+//var WR = new WeatherReport(latitude, longitude);
+//WR.fetch_weather();
+
+
 // handle right key press
-const time = new Time();
+const time = new TimeEvents();
 const cat_animation = document.getElementById("cat");
 const newspaper = document.getElementById("newspaper");
 
@@ -71,5 +89,12 @@ implementPopup(news_btn, news_popup, news_close, "assets/page_flip.mp3");
 const ts_btn = document.getElementById("timesetter_btn");
 const ts_popup = document.querySelector("#timesetter.popup");
 const ts_close = document.querySelector("#timesetter.popup .exit_btn");
-// change audio for this
-implementPopup(ts_btn, ts_popup, ts_close, "assets/page_flip.mp3");
+implementPopup(ts_btn, ts_popup, ts_close, "assets/pick_up.mp3");
+
+// handle time-setting
+const set_btn = document.querySelector("#timesetter.popup #setter #set_btn");
+set_btn.addEventListener("click", function() {
+    const month_set = document.querySelector("#timesetter.popup #setter #month").value;
+    const day_set = document.querySelector("#timesetter.popup #setter #day").value;
+    time.setDate(month_set - 1, day_set, 0);
+});

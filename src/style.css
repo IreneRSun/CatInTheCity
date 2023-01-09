@@ -8,8 +8,6 @@ body {
     display: flex;
     width: 1300px;
     height: 600px;
-    background-image: url(assets/City.png);
-    background-size: 100% 100%;
     transition: 1s;
 }
 
@@ -82,50 +80,131 @@ body {
     left: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(0deg, rgba(143,149,255,1) 0%, rgba(94,104,177,1) 50%, rgba(64,74,147,1) 100%);
+    background-image: url(assets/City.png);
+    background-position: 0 0;
+    background-size: 100% 100%;
     overflow: hidden;
-    z-index: -1;
 }
 
-/* sun object */
-#weather_effect #sun {
+/* day background */
+#weather_effect #day {
     position: absolute;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: gold;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgb(219, 252, 255) 0%, rgb(183, 248, 255) 70%, rgb(123, 235, 255) 100%);
+    visibility: hidden;
+    opacity: 0;
+    transition: 2s;
+    z-index: -2;
 }
 
-/* moon object */
-#weather_effect #moon {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: aliceblue;
+#weather_effect #day.active {
+    visibility: visible;
+    opacity: 1;
+    transition: 2s;
 }
 
-/* star objects */
-#weather_effect #stars {
+/* night background */
+#weather_effect #night {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-image:
-    radial-gradient(15px 15px at 100px 50px, white, rgba(255,255,255,.2) 2px, transparent 5px),
-    radial-gradient(6px 6px at 200px 150px, white, rgba(255,255,255,.15) 1px, transparent 6px),
-    radial-gradient(12px 12px at 300px 250px, white, rgba(255,255,255,.1) 2px, transparent 6px),
-    radial-gradient(9px 9px at 400px 350px, white, rgba(255,255,255,.1) 2px, transparent 5px),
-    radial-gradient(8px 8px at 500px 100px, white, rgba(255,255,255,.4), transparent 6px),
-    radial-gradient(1px 1px at 50px 200px, white, rgba(255,255,255,.1), transparent 5px),
-    radial-gradient(6px 6px at 150px 300px, white, rgba(255,255,255,.1) 2px, transparent 6px),
-    radial-gradient(10px 10px at 250px 400px, white, rgba(255,255,255,.15) 1px, transparent 5px),
-    radial-gradient(5px 5px at 350px 500px, white, rgba(255,255,255,.2) 2px, transparent 6px);
+    radial-gradient(6px 6px at 50px 100px, white, rgba(255,255,255,.2) 2px, transparent 5px),
+    radial-gradient(10px 10px at 100px 350px, white, rgba(255,255,255,.3) 1px, transparent 6px),
+    radial-gradient(8px 8px at 150px 400px, white, rgba(255,255,255,.1) 1px, transparent 6px),
+    radial-gradient(12px 12px at 200px 250px, white, rgba(255,255,255,.2) 2px, transparent 5px),
+    radial-gradient(6px 6px at 2500px 300px, white, rgba(255,255,255,.4) 2px, transparent 6px),
+    radial-gradient(10px 10px at 300px 150px, white, rgba(255,255,255,.2) 2px, transparent 5px),
+    radial-gradient(8px 8px at 350px 200px, white, rgba(255,255,255,.1) 1px, transparent 6px),
+    radial-gradient(12px 12px at 400px 50px, white, rgba(255,255,255,.3) 1px, transparent 5px),
+    linear-gradient(0deg, rgb(200, 203, 255) 0%, rgb(81, 89, 152) 70%, rgb(43, 49, 95) 100%);
     background-size: 450px 450px;
-
+    z-index: -2;
     visibility: hidden;
     opacity: 0;
+    transition: 2s;
+}
+
+#weather_effect #night.active {
+    visibility: visible;
+    opacity: 1;
+    transition: 2s;
+}
+
+/* sun object */
+@keyframes sun-glow {
+    0% {
+        box-shadow: 0 0 30px gold, inset 0 0 30px gold;
+    }
+    50% {
+        box-shadow: 0 0 40px rgb(241, 198, 88), inset 0 0 40px rgb(241, 198, 88);
+    }
+    100% {
+        box-shadow: 0 0 30px rgb(237, 221, 128), inset 0 0 30px rgb(237, 221, 128);
+    }
+}
+
+#weather_effect #sun {
+    position: absolute;
+    top: 5%;
+    left: 75%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: yellow;
+    animation: sun-glow 3s linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+    transition: 2s;
+}
+
+#weather_effect #sun.active {
+    visibility: visible;
+    opacity: 1;
+    transition: 2s;
+}
+
+/* moon object */
+@keyframes moon-glow {
+    0% {
+        box-shadow: 0 0 30px rgb(218, 240, 250), inset 0 0 30px rgb(218, 240, 250);
+    }
+    50% {
+        box-shadow: 0 0 40px rgb(184, 209, 231), inset 0 0 40px rgb(184, 209, 231);
+    }
+    100% {
+        box-shadow: 0 0 20px rgb(241, 236, 254), inset 0 0 20px rgb(241, 236, 254);
+    }
+}
+
+#weather_effect #moon {
+    position: absolute;
+    top: 10%;
+    left: 80%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: aliceblue;
+    animation: moon-glow 3s linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+    transition: 2s;
+}
+
+#weather_effect #moon.active {
+    visibility: visible;
+    opacity: 1;
     transition: 2s;
 }
 
@@ -137,11 +216,17 @@ body {
     width: 100%;
     height: 100%;
     background-image: url("assets/Clouds.png");
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
-
+    z-index: -1;
     visibility: hidden;
     opacity: 0;
+    transition: 2s;
+}
+
+#weather_effect #clouds.active {
+    visibility: visible;
+    opacity: 1;
     transition: 2s;
 }
 
@@ -151,51 +236,61 @@ body {
         transform: translateY(0);
     }
     to {
-        transform: translateY(650px);
+        transform: translateY(550px);
     }
 }
 
-#weather_effect .snow, .snow::after, .snow::before {
+#weather_effect #snow, #snow::after, #snow::before {
     content: "";
     position: absolute;
-    top: -650px;
+    top: -550px;
     left: 0;
     bottom: 0;
     right: 0;
     background-image:
-    radial-gradient(4px 4px at 100px 50px, white, transparent),
-    radial-gradient(6px 6px at 200px 150px, white, transparent),
-    radial-gradient(3px 3px at 300px 250px, white, transparent),
-    radial-gradient(4px 4px at 400px 350px, white, transparent),
-    radial-gradient(6px 6px at 500px 100px, white, transparent),
-    radial-gradient(3px 3px at 50px 200px, white, transparent),
-    radial-gradient(4px 4px at 150px 300px, white, transparent),
-    radial-gradient(6px 6px at 250px 400px, white, transparent),
-    radial-gradient(3px 3px at 350px 500px, white, transparent);
-    background-size: 650px 650px;
-
-    animation: snowfall 3s linear;
+    radial-gradient(3px 3px at 100px 50px, white, transparent),
+    radial-gradient(5px 5px at 200px 150px, white, transparent),
+    radial-gradient(7px 7px at 300px 250px, white, transparent),
+    radial-gradient(3px 3px at 400px 350px, white, transparent),
+    radial-gradient(5px 5px at 500px 100px, white, transparent),
+    radial-gradient(7px 7px at 50px 200px, white, transparent),
+    radial-gradient(3px 3px at 150px 300px, white, transparent),
+    radial-gradient(5px 5px at 250px 400px, white, transparent),
+    radial-gradient(7px 7px at 350px 500px, white, transparent);
+    background-size: 550px 550px;
+    animation: snowfall 4s linear;
     animation-iteration-count: infinite;
-
     visibility: hidden;
     opacity: 0;
     transition: 2s;
 }
 
-#weather_effect .snow::after {
-    margin-left: -250px;
+#weather_effect #snow::after {
+    margin-left: -200px;
     opacity: 0.5;
-    filter: blur(2px);
+    filter: blur(1px);
     animation-direction: reverse;
-    animation-duration: 6s;
+    animation-duration: 8s;
+    visibility: visible;
+    opacity: 1;
+    transition: 2s;
 }
 
-#weather_effect .snow::before {
-    margin-left: -350px;
+#weather_effect #snow::before {
+    margin-left: 200px;
     opacity: 0.7;
     filter: blur(1px);
     animation-direction: reverse;
-    animation-duration: 9s;
+    animation-duration: 12s;
+    visibility: visible;
+    opacity: 1;
+    transition: 2s;
+}
+
+#weather_effect #snow.active {
+    visibility: visible;
+    opacity: 1;
+    transition: 2s;
 }
 
 /* rain object */
@@ -208,63 +303,76 @@ body {
     }
 }
 
-#weather_effect .rain, .rain:after, .rain:before {
+#weather_effect #rain, #rain:after, #rain:before {
     content: "";
     position: absolute;
-    top: -650px;
+    top: -300px;
     left: 0;
     bottom: 0;
     right: 0;
     background-image:
-    radial-gradient(2px 16px at 100px 50px, rgb(117, 146, 190), transparent),
-    radial-gradient(2px 16px at 200px 150px, rgb(117, 146, 190), transparent),
-    radial-gradient(2px 16px at 300px 250px, rgb(117, 146, 190), transparent),
-    radial-gradient(2px 16px at 400px 350px, rgb(117, 146, 190), transparent),
-    radial-gradient(2px 16px at 500px 100px, rgb(117, 146, 190), transparent),
-    radial-gradient(2px 16px at 50px 200px, rgb(117, 146, 190), transparent),
-    radial-gradient(2px 16px at 150px 300px, rgb(117, 146, 190), transparent),
-    radial-gradient(2px 16px at 250px 400px, rgb(117, 146, 190), transparent),
-    radial-gradient(2px 16px at 350px 500px, rgb(117, 146, 190), transparent);
+    radial-gradient(1px 16px at 100px 50px, rgb(117, 146, 190), transparent),
+    radial-gradient(1px 16px at 200px 150px, rgb(117, 146, 190), transparent),
+    radial-gradient(1px 16px at 300px 250px, rgb(117, 146, 190), transparent),
+    radial-gradient(1px 16px at 400px 350px, rgb(117, 146, 190), transparent),
+    radial-gradient(1px 16px at 500px 100px, rgb(117, 146, 190), transparent),
+    radial-gradient(1px 16px at 50px 200px, rgb(117, 146, 190), transparent),
+    radial-gradient(1px 16px at 150px 300px, rgb(117, 146, 190), transparent),
+    radial-gradient(1px 16px at 250px 400px, rgb(117, 146, 190), transparent),
+    radial-gradient(1px 16px at 350px 500px, rgb(117, 146, 190), transparent);
     background-size: 300px 300px;
-
     animation: rainfall 1s linear;
     animation-iteration-count: infinite;
-
     visibility: hidden;
     opacity: 0;
     transition: 2s;
 }
 
-#weather_effect .rain::after {
+#weather_effect #rain::after {
     margin-left: -250px;
     opacity: 0.5;
     filter: blur(2px);
-    animation-direction: reverse;
     animation-duration: 6s;
+    visibility: visible;
+    opacity: 1;
+    transition: 2s;
 }
 
-#weather_effect .rain::before {
+#weather_effect #rain::before {
     margin-left: -350px;
     opacity: 0.7;
     filter: blur(1px);
-    animation-direction: reverse;
     animation-duration: 9s;
+    visibility: visible;
+    opacity: 1;
+    transition: 2s;
+}
+
+#weather_effect #rain.active {
+    visibility: visible;
+    opacity: 1;
+    transition: 2s;
 }
 
 /* fog object */
-#weather_effect .fog {
+#weather_effect #fog {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-image: url("assets/Fog.png");
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     filter: brightness(50%);
-
     visibility: hidden;
     opacity: 0;
+    transition: 2s;
+}
+
+#weather_effect #fog.active {
+    visibility: visible;
+    opacity: 1;
     transition: 2s;
 }
 
@@ -347,7 +455,7 @@ body {
     transition: 0.2s linear;
 }
 
-@keyframes glow {
+@keyframes time-glow {
     from {
         text-shadow: 3px 0px 5px white, 0px 3px 5px white, 5px 0px 5px whitesmoke, 0px 5px 5px whitesmoke;
       }
@@ -358,7 +466,7 @@ body {
 
 #clock #inner ul li.active {
     font-weight: bold;
-    animation: glow 1s ease-in-out infinite alternate;
+    animation: time-glow 1s ease-in-out infinite alternate;
     transition: 0.2s linear;
 }
 

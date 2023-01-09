@@ -43,18 +43,4 @@ function drawClock() {
     placeClockElements(hours, 360/24, 180);
 }
 
-// add elements to the date setter datalist
-function drawResetElements() {
-    // get current date and date of next 6 days
-    const date = new Date().getDate();
-    const curr = new Date();
-    // add options to date setter datalist
-    const datalist = document.getElementById("set");
-    for (i = 0; i < 7; ++i) {
-        curr.setDate(date + i);
-        var element = `${curr.getFullYear()}/${curr.getMonth()}/${curr.getDate()}`;
-        datalist.innerHTML.append(`<option value = ${element}>`);
-    }
-}
-
 drawClock();

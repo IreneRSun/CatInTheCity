@@ -18,13 +18,14 @@
 
             <!-- background weather -->
             <div id = "weather_effect">
+                <div id = "day"></div>
+                <div id = "night"></div>
                 <div id = "sun"></div>
                 <div id = "moon"></div>
-                <div id = "stars"></div>
                 <div id = "clouds"></div>
-                <div class = "snow"></div>
-                <div class = "rain"></div>
-                <div class = "fog"></div>
+                <div id = "snow"></div>
+                <div id = "rain"></div>
+                <div id = "fog"></div>
             </div>
 
             <!-- cat animation -->
@@ -114,16 +115,17 @@
             <p>Place cursor inside input box and scroll to adjust</p>
             <div id = "setter">
                 <label for = "month">Month</label>
-                <input type = "number" id = "month" min = 1 max = 12 placeholder = 1 list>
+                <input type = "number" id = "month" min = 1 max = 12 value = 1>
                 <label for = "day">Day</label>
-                <input type = "number" id = "day" min = 1 max = 31 placeholder = 1>
+                <input type = "number" id = "day" min = 1 max = 31 value = 1>
                 <button type = "submit" id = "set_btn">Set</button>            
             </div>
             <button class = "exit_btn" for = "timesetter_btn">Close</button>
         </div>
 
-        <!-- js script for interactivity -->
-        <script src = "time.js"></script>
+        <!-- js scripts for interactivity -->
+        <script src = "weather_report.js"></script>
+        <script src = "time_events.js"></script>
         <script src = "webpage_logic.js"></script>
         
     </body>
