@@ -2,22 +2,28 @@ class TimeEvents{
 
     // constructor
     // handles webpage's time-related events
-    constructor(latitude, longitude) {
+    constructor() {
         // month, day, and hour elements of clock
         this.months = document.querySelectorAll("#clock #inner #months li");
         this.days = document.querySelectorAll("#clock #inner #days li");
         this.hours = document.querySelectorAll("#clock #inner #hours li");
 
-        // news report elements
+        // news report date display
         this.news_date = document.querySelector("#news.popup #date");
-        this.news_weather = document.querySelector("#news.popup #weather");
 
         // background weather elements
         this.weather_effects = this.getWeathers();
 
-        // get weather report spanning the week
-        //this.report = new WeatherReport(latitude, longitude);
-        this.report = "snow";
+        // user location
+        this.loc = null;
+
+        // weather report spanning the week
+        this.report = null;
+
+        // attribute indicating if current clock time is past 7 days
+        this.end = new Date();
+        this.end.setDate(new Date().getDate() + 7);
+        this.end_reached = false;
 
         // set clock to current date
         this.date = new Date();
@@ -25,6 +31,17 @@ class TimeEvents{
         this.date.setDate(1);
         this.date.setHours(0);
         this.setDate(new Date().getMonth(), new Date().getDate(), 0);
+    }
+
+    // set user position
+    setLoc(loc) {
+        this.loc = loc;
+        this.report = new WeatherReport(loc.lat, loc.long);
+    }
+
+    // get whether location has been set
+    locSet() {
+        return this.loc != null;
     }
 
     // get list of all weather effects
@@ -65,9 +82,12 @@ class TimeEvents{
         if (this.date.getHours() >= 5 && this.date.getHours() <= 17) {
             active.push("day");
             active.push("sun");
+            active.push("rain");
+            active.push("clouds");
         } else {
             active.push("night");
             active.push("moon");
+            active.push("snow");
         }
         this.activateWeathers(active);
     }
@@ -129,7 +149,17 @@ class TimeEvents{
             this.date.setHours(hour);
         }
 
+        // check if end date reached
+        if (this.date.getTime() < this.end.getTime()) {
+            this.end_reached = false;
+        } else {
+            this.end_reached = true;
+        }
+
+        // adjust weather accordingly
         this.adjustWeather();
+
+        // update news elements
         this.news_date.innerHTML = `${this.getMonthString()} ${this.date.getDate()}, ${this.date.getFullYear()}`;
     }
     
@@ -176,6 +206,10 @@ class TimeEvents{
             case 11:
                 return "December";
         }
+    }
+
+    endReached() {
+        return this.end_reached;
     }
 
 }

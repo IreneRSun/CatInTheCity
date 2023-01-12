@@ -74,6 +74,15 @@ body {
 }
 
 /* background weather container */
+@keyframes city_stroll {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: -1280px;
+    }
+}
+
 #weather_effect {
     position: absolute;
     top: 0;
@@ -83,7 +92,10 @@ body {
     background-image: url(assets/City.png);
     background-position: 0 0;
     background-size: 100% 100%;
+    background-repeat: repeat-x;
     overflow: hidden;
+    animation: city_stroll 10s linear infinite;
+    animation-play-state: paused;
 }
 
 /* day background */

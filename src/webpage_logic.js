@@ -1,34 +1,42 @@
 const real_date = new Date();
-var latitude = null;
-var longitude = null;
 var active_root = true;
 var timer = null;
+const root = document.getElementById("root");
+const time = new TimeEvents();
+
+// check if geolocation is supported
+if (!navigator.geolocation) {
+    root.classList.add("inactive");
+    alert("This browser does not support Geolocation");
+}
 
 // get user location
-function getLoc(position) {
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
-}
-
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(getLoc);
-} else {
-    alert("Please allow geolocation on this browser");
-}
-
-//var WR = new WeatherReport(latitude, longitude);
-//WR.fetch_weather();
-
+window.onload = async () => {
+    const getLoc = async () => {
+        const position = await new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+        return {
+            lat: position.coords.latitude,
+            long: position.coords.longitude
+        }
+    };
+    const loc = await getLoc();
+    time.setLoc(loc);
+};
 
 // handle right key press
-const time = new TimeEvents();
 const cat_animation = document.getElementById("cat");
 const newspaper = document.getElementById("newspaper");
+const city_animation = document.getElementById("weather_effect");
 
 document.addEventListener("keydown", function(event) {
-    if (event.key == "ArrowRight" && active_root) {
+    if (event.key == "ArrowRight" && active_root && time.locSet()) {
         cat_animation.style.animationPlayState = "running";
-        if (timer == null || ( new Date().getTime() - timer.getTime()) >= 500) {
+        city_animation.style.animationPlayState = "running";
+        if (false) {  // time.getEndReached()
+            //  ...   implement  ... //
+        } else if (timer == null || ( new Date().getTime() - timer.getTime()) >= 500) {
             time.incrementTime();
             timer = new Date();
         }
@@ -38,12 +46,11 @@ document.addEventListener("keydown", function(event) {
 document.addEventListener("keyup", function(event) {
     if (event.key == "ArrowRight" && active_root) {
         cat_animation.style.animationPlayState = "paused";
+        city_animation.style.animationPlayState = "paused";
     }
 });
 
 // handle popups
-const root = document.getElementById("root");
-
 function openPopup(popup) {
     // blur root
     root.classList.add("inactive");

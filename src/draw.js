@@ -1,6 +1,6 @@
 // draws elements of the webpage
 
-// add numbers to the clock
+// adds numbers to the clock
 function addClockElements(container, end) {
     for (i = end; i > 0; --i) {
         var element;
@@ -9,7 +9,7 @@ function addClockElements(container, end) {
     }
 }
 
-// position the clock elements
+// positions the clock elements
 function placeClockElements(elements, degree, radius) {
     elements.forEach(function(element, index) {
         // place element
@@ -24,7 +24,7 @@ function placeClockElements(elements, degree, radius) {
     });
 }
 
-// draw the clock
+// draws the clock
 function drawClock() {
     // add month elements to clock
     const month_container = document.querySelector("#clock #inner #months");
