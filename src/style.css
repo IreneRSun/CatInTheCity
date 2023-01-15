@@ -79,7 +79,7 @@ body {
         background-position-x: 0;
     }
     to {
-        background-position-x: -1280px;
+        background-position-x: -1300px;
     }
 }
 
@@ -94,7 +94,7 @@ body {
     background-size: 100% 100%;
     background-repeat: repeat-x;
     overflow: hidden;
-    animation: city_stroll 10s linear infinite;
+    animation: city_stroll 15s linear infinite;
     animation-play-state: paused;
 }
 
@@ -389,7 +389,7 @@ body {
 }
 
 /* cat animation code*/
-@keyframes cat_sprite {
+@keyframes cat_walk {
     from {
         background-position-x: 400px;
         background-position-y: 2400px;
@@ -397,6 +397,17 @@ body {
     to {
         background-position-x: 400px;
         background-position-y: 0;
+    }
+}
+
+@keyframes cat_sit {
+    from {
+        background-position-x: 0;
+        background-position-y: 0;
+    }
+    to {
+        background-position-x: 0;
+        background-position-y: 1200px;
     }
 }
 
@@ -408,14 +419,13 @@ body {
     width: 400px;
     height: 200px;
     transform: translateY(400px);
-
-    /* animation properties */
     background: url("assets/Cat_Animation.png");
-    animation-name: cat_sprite;
-    animation-duration: 1.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
+    animation: cat_walk 1.5s steps(12) infinite;
     animation-play-state: paused;
+}
+
+#cat.atEnd {
+    animation: cat_sit 1.5s steps(6) 1;
 }
 
 /* clock object container */
@@ -530,4 +540,8 @@ body {
     background-color: burlywood;
     color: white;
     font-family: 'Times New Roman', Times, serif; 
+}
+
+#timesetter #setter #invalid_input {
+    display: none;
 }

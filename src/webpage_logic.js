@@ -1,7 +1,6 @@
-const real_date = new Date();
 var active_root = true;
-var timer = null;
 const root = document.getElementById("root");
+var timer = null;
 const time = new TimeEvents();
 
 // check if geolocation is supported
@@ -10,32 +9,36 @@ if (!navigator.geolocation) {
     alert("This browser does not support Geolocation");
 }
 
-// get user location
-window.onload = async () => {
-    const getLoc = async () => {
-        const position = await new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition(resolve, reject);
-        });
-        return {
-            lat: position.coords.latitude,
-            long: position.coords.longitude
-        }
-    };
-    const loc = await getLoc();
-    time.setLoc(loc);
-};
+// get user location and do setup
+function getLoc() {
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+}
+
+function setStart(position) {
+    const lat = position.coords.latitude;
+    const long = position.coords.longitude;
+    time.createReport(lat, long);
+}
+
+getLoc()
+.then(position => setStart(position))
+.catch((err) => alert(`Error: ${err}`));
 
 // handle right key press
-const cat_animation = document.getElementById("cat");
+const cat = document.getElementById("cat");
 const newspaper = document.getElementById("newspaper");
-const city_animation = document.getElementById("weather_effect");
+const city = document.getElementById("weather_effect");
 
 document.addEventListener("keydown", function(event) {
-    if (event.key == "ArrowRight" && active_root && time.locSet()) {
-        cat_animation.style.animationPlayState = "running";
-        city_animation.style.animationPlayState = "running";
-        if (false) {  // time.getEndReached()
-            //  ...   implement  ... //
+    if (event.key == "ArrowRight" && active_root) {
+        cat.style.animationPlayState = "running";
+        city.style.animationPlayState = "running";
+        if (time.endReached()) {
+            if (!cat.classList.contains("atEnd")) {
+                cat.classList.add("atEnd");
+            }
         } else if (timer == null || ( new Date().getTime() - timer.getTime()) >= 500) {
             time.incrementTime();
             timer = new Date();
@@ -45,8 +48,8 @@ document.addEventListener("keydown", function(event) {
 
 document.addEventListener("keyup", function(event) {
     if (event.key == "ArrowRight" && active_root) {
-        cat_animation.style.animationPlayState = "paused";
-        city_animation.style.animationPlayState = "paused";
+        cat.style.animationPlayState = "paused";
+        city.style.animationPlayState = "paused";
     }
 });
 
@@ -100,8 +103,20 @@ implementPopup(ts_btn, ts_popup, ts_close, "assets/pick_up.mp3");
 
 // handle time-setting
 const set_btn = document.querySelector("#timesetter.popup #setter #set_btn");
+const err_lbl = document.querySelector("#timesetter.popup #setter #invalid_input");
 set_btn.addEventListener("click", function() {
     const month_set = document.querySelector("#timesetter.popup #setter #month").value;
     const day_set = document.querySelector("#timesetter.popup #setter #day").value;
+    // check inputs
+    if (typeof time.getIndex(month_set - 1, day_set) == "undefined") {
+        err_lbl.style.display = "block";
+    } else {
+        err_lbl.style.display = "none";
+    }
+    // set date
     time.setDate(month_set - 1, day_set, 0);
+    // reset cat animation if necessary
+    if (cat.classList.contains("atEnd")) {
+        cat.classList.remove("atEnd");
+    }
 });

@@ -14,15 +14,14 @@ class TimeEvents{
         // background weather elements
         this.weather_effects = this.getWeathers();
 
-        // user location
-        this.loc = null;
-
         // weather report spanning the week
-        this.report = null;
+        this.report;
 
-        // attribute indicating if current clock time is past 7 days
+        // date-checking attributes
+        this.dateIndexes = this.getDateIndexes();
         this.end = new Date();
         this.end.setDate(new Date().getDate() + 7);
+        this.end.setHours(0);
         this.end_reached = false;
 
         // set clock to current date
@@ -30,18 +29,13 @@ class TimeEvents{
         this.date.setMonth(0);
         this.date.setDate(1);
         this.date.setHours(0);
+    }
+
+    // create weather report
+    createReport(latitude, longitude) {
+        this.report = new WeatherReport(latitude, longitude, 7);
+        this.report.fetchWeather();
         this.setDate(new Date().getMonth(), new Date().getDate(), 0);
-    }
-
-    // set user position
-    setLoc(loc) {
-        this.loc = loc;
-        this.report = new WeatherReport(loc.lat, loc.long);
-    }
-
-    // get whether location has been set
-    locSet() {
-        return this.loc != null;
     }
 
     // get list of all weather effects
@@ -79,16 +73,32 @@ class TimeEvents{
     // adjusts weather effects to fit current date
     adjustWeather() {
         const active = new Array();
-        if (this.date.getHours() >= 5 && this.date.getHours() <= 17) {
+
+        // get indexes of current clock date
+        const day_index = this.getIndex(this.date.getMonth(), this.date.getDate());  
+        const hour_index = this.date.getHours();
+
+        // add weather effects for current clock date
+        if (this.report.isDay(day_index, hour_index)) {
             active.push("day");
             active.push("sun");
-            active.push("rain");
-            active.push("clouds");
         } else {
             active.push("night");
             active.push("moon");
+        }
+        if (this.report.isCloudy(day_index, hour_index)) {
+            active.push("clouds");
+        }
+        if (this.report.isRainy(day_index, hour_index)) {
+            active.push("rain");
+        }
+        if (this.report.isSnowy(day_index, hour_index)) {
             active.push("snow");
         }
+        if (this.report.isFoggy(day_index, hour_index)) {
+            active.push("fog");
+        }
+        console.log(active);
         this.activateWeathers(active);
     }
 
@@ -152,15 +162,19 @@ class TimeEvents{
         // check if end date reached
         if (this.date.getTime() < this.end.getTime()) {
             this.end_reached = false;
+
+            // update news report date
+            this.news_date.innerHTML = `${this.getMonthString()} ${this.date.getDate()}, ${this.date.getFullYear()}`;
+
+            // update weather report display
+            this.report.updateDaily(this.getIndex(this.date.getMonth(), this.date.getDate()));
+            this.report.updateHourly(this.getIndex(this.date.getMonth(), this.date.getDate()), this.date.getHours());
+            // adjust weather effects accordingly
+            this.adjustWeather();
+
         } else {
             this.end_reached = true;
         }
-
-        // adjust weather accordingly
-        this.adjustWeather();
-
-        // update news elements
-        this.news_date.innerHTML = `${this.getMonthString()} ${this.date.getDate()}, ${this.date.getFullYear()}`;
     }
     
     // increments the time of the clock by one hour
@@ -208,8 +222,34 @@ class TimeEvents{
         }
     }
 
+    // returns whether the end date has been reached
     endReached() {
         return this.end_reached;
+    }
+
+    // gets all valid dates
+    getDateIndexes() {
+        const dateIndexes = new Map();
+
+        // add valid dates to map
+        for (i = 0; i < 7; ++i) {
+            const real_date = new Date();
+            real_date.setDate(real_date.getDate() + i);
+            dateIndexes.set(i, [real_date.getMonth(), real_date.getDate()]);
+        }
+
+        return dateIndexes;
+    }
+
+    // returns index of day
+    getIndex(month, day) {
+        var index = NaN;
+        this.dateIndexes.forEach(function(value, key) {
+            if (value[0] == month && value[1] == day) {
+                index = key;
+            }
+        });
+        return index;
     }
 
 }
