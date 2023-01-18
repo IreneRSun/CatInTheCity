@@ -1,2 +1,3 @@
 # CatInTheCity
- An interactive weather reporting webpage where u can watch the weather on your screen
+ An interactive weather reporting webpage
+ Has an attractive UI where you can watch the weather change on your screen
