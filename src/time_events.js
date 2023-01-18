@@ -244,7 +244,7 @@ class TimeEvents{
 
     // returns index of day
     getIndex(month, day) {
-        var index = NaN;
+        var index = null;
         this.dateIndexes.forEach(function(value, key) {
             if (value[0] == month && value[1] == day) {
                 index = key;

@@ -108,13 +108,13 @@ set_btn.addEventListener("click", function() {
     const month_set = document.querySelector("#timesetter.popup #setter #month").value;
     const day_set = document.querySelector("#timesetter.popup #setter #day").value;
     // check inputs
-    if (typeof time.getIndex(month_set - 1, day_set) == "undefined") {
+    if (time.getIndex(month_set - 1, day_set) == null) {
         err_lbl.style.display = "block";
     } else {
         err_lbl.style.display = "none";
+        // set date
+        time.setDate(month_set - 1, day_set, 0);
     }
-    // set date
-    time.setDate(month_set - 1, day_set, 0);
     // reset cat animation if necessary
     if (cat.classList.contains("atEnd")) {
         cat.classList.remove("atEnd");

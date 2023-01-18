@@ -89,7 +89,10 @@ body {
     left: 0;
     height: 100%;
     width: 100%;
-    background: url(assets/City.png) 0 0 repeat-x 100% 100%;
+    background: url(assets/City.png);
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    background-size: 100% 100%;
     overflow: hidden;
     animation: city_stroll 15s linear infinite;
     animation-play-state: paused;
@@ -220,7 +223,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("assets/Clouds.png") no-repeat 100% 100%;
+    background-image: url("assets/Clouds.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     z-index: -1;
     visibility: hidden;
     opacity: 0;
@@ -362,7 +367,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("assets/Fog.png") no-repeat 100% 100%;
+    background-image: url("assets/Fog.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     filter: brightness(50%);
     visibility: hidden;
     opacity: 0;
@@ -546,7 +553,7 @@ body {
 
 #timesetter #setter #set_btn {
     border-color: white;
-    background-color: burlywood;
+    background: burlywood;
     color: white;
     font-family: 'Times New Roman', Times, serif; 
 }
