@@ -79,26 +79,27 @@ class TimeEvents{
         const hour_index = this.date.getHours();
 
         // add weather effects for current clock date
-        if (this.report.isDay(day_index, hour_index)) {
-            active.push("day");
-            active.push("sun");
-        } else {
-            active.push("night");
-            active.push("moon");
+        if (this.report.dataAvailable(day_index)) {
+            if (this.report.isDay(day_index, hour_index)) {
+                active.push("day");
+                active.push("sun");
+            } else {
+                active.push("night");
+                active.push("moon");
+            }
+            if (this.report.isCloudy(day_index, hour_index)) {
+                active.push("clouds");
+            }
+            if (this.report.isRainy(day_index, hour_index)) {
+                active.push("rain");
+            }
+            if (this.report.isSnowy(day_index, hour_index)) {
+                active.push("snow");
+            }
+            if (this.report.isFoggy(day_index, hour_index)) {
+                active.push("fog");
+            }
         }
-        if (this.report.isCloudy(day_index, hour_index)) {
-            active.push("clouds");
-        }
-        if (this.report.isRainy(day_index, hour_index)) {
-            active.push("rain");
-        }
-        if (this.report.isSnowy(day_index, hour_index)) {
-            active.push("snow");
-        }
-        if (this.report.isFoggy(day_index, hour_index)) {
-            active.push("fog");
-        }
-        console.log(active);
         this.activateWeathers(active);
     }
 

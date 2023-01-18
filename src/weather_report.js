@@ -21,7 +21,7 @@ class WeatherReport {
     const api = "forecast.json";
     const request = new XMLHttpRequest();
     request.open("GET", 
-    base_url + api + `?key=${key}&q=${this.latitude},${this.longitude}&days=${this.days}`, false);
+    base_url + api + `?key=${key}&q=${this.latitude},${this.longitude}&days=${this.days}&aqi=no&alerts=no`, false);
     request.send();
 
     // handle request
@@ -35,7 +35,7 @@ class WeatherReport {
 
   // updates daily weather in news report
   updateDaily(day_index) {
-    if (this.raw_data != null) {
+    if (this.raw_data != null && this.dataAvailable(day_index)) {
       const data = this.raw_data[day_index]["day"];
       const text = 
       `<strong>Maximum Temperature:</strong> ${data["maxtemp_c"]}°C/${data["maxtemp_f"]}°F </br>
@@ -52,7 +52,7 @@ class WeatherReport {
 
   // updates hourly weather in news report
   updateHourly(day_index, hour_index) {
-    if (this.raw_data != null) {
+    if (this.raw_data != null && this.dataAvailable(day_index)) {
       const data = this.raw_data[day_index]["hour"][hour_index];
       const text = 
       `<strong>Temperature:</strong> ${data["temp_c"]}°C/${data["temp_f"]}°F </br>
@@ -61,6 +61,11 @@ class WeatherReport {
       `
       this.hourly_display.innerHTML = text;
     }  
+  }
+
+  // returns whether the weather data of a day is available
+  dataAvailable(day_index) {
+    return typeof this.raw_data[day_index] != "undefined";
   }
 
   // returns whether it is daytime at the given hour
@@ -95,7 +100,7 @@ class WeatherReport {
   isFoggy(day_index, hour_index) {
     if (this.raw_data != null) {
       const weather = this.raw_data[day_index]["hour"][hour_index]["condition"]["text"];
-      return weather.toLowerCase().includes("Fog") || weather.toLowerCase().includes("Mist");
+      return weather.toLowerCase().includes("fog") || weather.toLowerCase().includes("mist");
     }
   }
 

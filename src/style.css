@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background: black;
 }
 
 /* main frame */
@@ -67,7 +67,7 @@ body {
 
 .popup .exit_btn {
     border-color: white;
-    background-color: burlywood;
+    background: burlywood;
     color: white;
     font-family: 'Times New Roman', Times, serif;
     margin: 10px 0 10px 0;
@@ -89,10 +89,7 @@ body {
     left: 0;
     height: 100%;
     width: 100%;
-    background-image: url(assets/City.png);
-    background-position: 0 0;
-    background-size: 100% 100%;
-    background-repeat: repeat-x;
+    background: url(assets/City.png) 0 0 repeat-x 100% 100%;
     overflow: hidden;
     animation: city_stroll 15s linear infinite;
     animation-play-state: paused;
@@ -168,10 +165,8 @@ body {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: yellow;
-    animation: sun-glow 3s linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    background: yellow;
+    animation: sun-glow 3s infinite linear alternate;
     z-index: -1;
     visibility: hidden;
     opacity: 0;
@@ -204,10 +199,8 @@ body {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: aliceblue;
-    animation: moon-glow 3s linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    background: aliceblue;
+    animation: moon-glow 3s infinite linear alternate;
     z-index: -1;
     visibility: hidden;
     opacity: 0;
@@ -227,9 +220,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("assets/Clouds.png");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    background-image: url("assets/Clouds.png") no-repeat 100% 100%;
     z-index: -1;
     visibility: hidden;
     opacity: 0;
@@ -270,8 +261,7 @@ body {
     radial-gradient(5px 5px at 250px 400px, white, transparent),
     radial-gradient(7px 7px at 350px 500px, white, transparent);
     background-size: 550px 550px;
-    animation: snowfall 4s linear;
-    animation-iteration-count: infinite;
+    animation: snowfall 4s infinite linear;
     visibility: hidden;
     opacity: 0;
     transition: 2s;
@@ -333,8 +323,7 @@ body {
     radial-gradient(1px 16px at 250px 400px, rgb(117, 146, 190), transparent),
     radial-gradient(1px 16px at 350px 500px, rgb(117, 146, 190), transparent);
     background-size: 300px 300px;
-    animation: rainfall 1s linear;
-    animation-iteration-count: infinite;
+    animation: rainfall 1s infinite linear;
     visibility: hidden;
     opacity: 0;
     transition: 2s;
@@ -373,9 +362,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("assets/Fog.png");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    background-image: url("assets/Fog.png") no-repeat 100% 100%;
     filter: brightness(50%);
     visibility: hidden;
     opacity: 0;
@@ -500,13 +487,35 @@ body {
     display: inline-block;
 }
 
+@keyframes btn_glow {
+    from {
+        box-shadow: 0 0 5px rgb(196, 196, 196), 0 0 5px inset rgb(196, 196, 196);
+    } to {
+        box-shadow: 0 0 10px rgb(0, 0, 0), 0 0 10px inset rgb(0, 0, 0), 0 0 10px silver, 0 0 10px inset silver;
+    }
+}
+
 .menu_btn {
-    background-color: rgb(65, 9, 9);
-    border: 5px solid darkgoldenrod;
-    color: rgb(152, 146, 132);
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-color: transparent;
+    color: rgb(159, 159, 159);
+    text-shadow: 0 0 5px rgb(184, 209, 231);
     font-family: 'Times New Roman', Times, serif;
-    border-radius: 10%;
+    font-size: 32px;
+    border-radius: 50%;
+    align-content: center;
+    animation: btn_glow 2s infinite alternate;
     cursor: pointer;
+}
+
+@keyframes bar_glow {
+    from {
+        box-shadow: 0 0 5px rgb(196, 196, 196), 0 0 5px inset rgb(196, 196, 196);
+    } to {
+        box-shadow: 0 0 10px rgb(0, 0, 0), 0 0 10px inset rgb(0, 0, 0), 0 0 10px silver, 0 0 10px inset silver;
+    }
 }
 
 .menu_content {
