@@ -1,6 +1,6 @@
 class WeatherReport {
   // constructs a weather report of the next num_days days for the given location
-  // handles updating news report elements relating to the weather
+  // handles updating news report's weather information
   constructor(latitude, longitude, num_days) {
     // initialize attributes
     this.latitude = latitude;
@@ -63,11 +63,6 @@ class WeatherReport {
     }  
   }
 
-  // returns whether the weather data of a day is available
-  dataAvailable(day_index) {
-    return typeof this.raw_data[day_index] != "undefined";
-  }
-
   // returns whether it is daytime at the given hour
   isDay(day_index, hour_index) {
     if (this.raw_data != null) {
@@ -102,6 +97,20 @@ class WeatherReport {
       const weather = this.raw_data[day_index]["hour"][hour_index]["condition"]["text"];
       return weather.toLowerCase().includes("fog") || weather.toLowerCase().includes("mist");
     }
+  }
+
+  // returns the number days the api returned weather data for
+  availableDays() {
+    if (this.raw_data == null) {
+      return 0;
+    } else {
+      return this.raw_data.length;
+    }
+  }
+
+  // returns whether the weather data of a day is available
+  dataAvailable(day_index) {
+    return typeof this.raw_data[day_index] != "undefined";
   }
 
 }

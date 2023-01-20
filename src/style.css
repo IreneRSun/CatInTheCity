@@ -397,11 +397,11 @@ body {
 @keyframes cat_sit {
     from {
         background-position-x: 0;
-        background-position-y: 0;
+        background-position-y: 2400px;
     }
     to {
         background-position-x: 0;
-        background-position-y: 1200px;
+        background-position-y: 1400px;
     }
 }
 
@@ -419,7 +419,9 @@ body {
 }
 
 #cat.atEnd {
-    animation: cat_sit 1.5s steps(6) 1;
+    animation: cat_sit 1.5s steps(5);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 /* clock object container */

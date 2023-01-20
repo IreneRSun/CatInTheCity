@@ -1,5 +1,4 @@
 class TimeEvents{
-
     // constructor
     // handles webpage's time-related events
     constructor() {
@@ -18,9 +17,8 @@ class TimeEvents{
         this.report;
 
         // date-checking attributes
-        this.dateIndexes = this.getDateIndexes();
+        this.dateIndexes;
         this.end = new Date();
-        this.end.setDate(new Date().getDate() + 7);
         this.end.setHours(0);
         this.end_reached = false;
 
@@ -31,14 +29,17 @@ class TimeEvents{
         this.date.setHours(0);
     }
 
-    // create weather report
+    // creates weather report
     createReport(latitude, longitude) {
-        this.report = new WeatherReport(latitude, longitude, 7);
+        const max_length = 7;
+        this.report = new WeatherReport(latitude, longitude, max_length);
         this.report.fetchWeather();
+        this.end.setDate(new Date().getDate() + this.report.availableDays());
+        this.dateIndexes = this.getDateIndexes(this.report.availableDays());
         this.setDate(new Date().getMonth(), new Date().getDate(), 0);
     }
 
-    // get list of all weather effects
+    // gets list of all weather effects
     getWeathers() {
         const weathers = new Map();
         weathers.set("day", document.querySelector("#weather_effect #day"));
@@ -52,7 +53,7 @@ class TimeEvents{
         return weathers;
     }
 
-    // activate given weather effects and deactivates all others
+    // activates given weather effects and deactivates all others
     activateWeathers(keys) {
         this.weather_effects.forEach(function(element, key) {
             // deactivate all weather effects if it is not in given keys
@@ -229,11 +230,11 @@ class TimeEvents{
     }
 
     // gets all valid dates
-    getDateIndexes() {
+    getDateIndexes(num_days) {
         const dateIndexes = new Map();
 
         // add valid dates to map
-        for (i = 0; i < 7; ++i) {
+        for (i = 0; i < num_days; ++i) {
             const real_date = new Date();
             real_date.setDate(real_date.getDate() + i);
             dateIndexes.set(i, [real_date.getMonth(), real_date.getDate()]);

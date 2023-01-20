@@ -36,9 +36,8 @@ document.addEventListener("keydown", function(event) {
         cat.style.animationPlayState = "running";
         city.style.animationPlayState = "running";
         if (time.endReached()) {
-            if (!cat.classList.contains("atEnd")) {
-                cat.classList.add("atEnd");
-            }
+            cat.style.animationIterationCount = 1;
+            city.style.animationPlayState = "paused";
         } else if (timer == null || ( new Date().getTime() - timer.getTime()) >= 500) {
             time.incrementTime();
             timer = new Date();
@@ -50,6 +49,13 @@ document.addEventListener("keyup", function(event) {
     if (event.key == "ArrowRight" && active_root) {
         cat.style.animationPlayState = "paused";
         city.style.animationPlayState = "paused";
+    }
+});
+
+// handle changing cat animation once end is reached
+cat.addEventListener("animationend", function() {
+    if (!cat.classList.contains("atEnd")) {
+        cat.classList.add("atEnd");
     }
 });
 
@@ -115,8 +121,9 @@ set_btn.addEventListener("click", function() {
         // set date
         time.setDate(month_set - 1, day_set, 0);
     }
-    // reset cat animation if necessary
+    // reset cat and city animations as necessary
     if (cat.classList.contains("atEnd")) {
         cat.classList.remove("atEnd");
+        city.style.animationPlayState = "running";
     }
 });
