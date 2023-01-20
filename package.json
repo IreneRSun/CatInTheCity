@@ -1,3 +1,14 @@
 {
-    
+    "name": "catinthecity",
+    "version": "1.0",
+    "license": "none",
+    "description": "Cat in the City is an interactive weather reporting webpage where you can watch the weather forecast play out on the screen like a video",
+    "keywords": [
+        "weather",
+        "forecast"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/IreneRSun/CatInTheCity"
+    }
 }
