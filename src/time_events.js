@@ -166,7 +166,7 @@ class TimeEvents{
             this.end_reached = false;
 
             // update news report date
-            this.news_date.innerHTML = `${this.getMonthString()} ${this.date.getDate()}, ${this.date.getFullYear()}`;
+            this.news_date.innerHTML = `${this.getMonthString(this.date.getMonth())} ${this.date.getDate()}, ${this.date.getFullYear()}`;
 
             // update weather report display
             this.report.updateDaily(this.getIndex(this.date.getMonth(), this.date.getDate()));
@@ -195,8 +195,8 @@ class TimeEvents{
     }
 
     // gets the current month on the clock (as a string)
-    getMonthString() {
-        switch (this.date.getMonth()) {
+    getMonthString(month) {
+        switch (month) {
             case 0:
                 return "January";
             case 1:
@@ -229,7 +229,7 @@ class TimeEvents{
         return this.end_reached;
     }
 
-    // gets all valid dates
+    // gets all valid dates and displays them in time-setter popup
     getDateIndexes(num_days) {
         const dateIndexes = new Map();
 
@@ -239,6 +239,12 @@ class TimeEvents{
             real_date.setDate(real_date.getDate() + i);
             dateIndexes.set(i, [real_date.getMonth(), real_date.getDate()]);
         }
+
+        // display range of valid dates
+        const first = dateIndexes.get(0);
+        const last = dateIndexes.get(num_days - 1);
+        const display = document.getElementById("valid_dates");
+        display.innerHTML = `Valid dates: ${this.getMonthString(first[0])} ${first[1]} - ${this.getMonthString(last[0])} ${last[1]}`;
 
         return dateIndexes;
     }
