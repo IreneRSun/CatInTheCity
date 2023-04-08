@@ -11,7 +11,10 @@ This is a personal project made for learning purposes, so it is for personal use
 I do not own any of the images and sound files stored in the assets folder. All credit goes to their respective owners.
 
 ## Demo
-https://github.com/IreneRSun/CatInTheCity/blob/main/src/Demo2023-04-07.mp4
+<video width="320" height="240" controls>
+  <source src="https://github.com/IreneRSun/CatInTheCity/blob/main/src/Demo2023-04-07.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 ## Accreditations
 
