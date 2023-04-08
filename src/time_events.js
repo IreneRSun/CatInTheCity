@@ -171,6 +171,7 @@ class TimeEvents{
             // update weather report display
             this.report.updateDaily(this.getIndex(this.date.getMonth(), this.date.getDate()));
             this.report.updateHourly(this.getIndex(this.date.getMonth(), this.date.getDate()), this.date.getHours());
+            
             // adjust weather effects accordingly
             this.adjustWeather();
 

@@ -111,6 +111,10 @@ implementPopup(ts_btn, ts_popup, ts_close, "assets/pick_up.mp3");
 const set_btn = document.querySelector("#timesetter.popup #setter #set_btn");
 const err_lbl = document.querySelector("#timesetter.popup #setter #invalid_input");
 set_btn.addEventListener("click", function() {
+    // play switch sound
+    const sound = new Audio("assets/switch.mp3");
+    sound.play();
+    // get input
     const month_set = document.querySelector("#timesetter.popup #setter #month").value;
     const day_set = document.querySelector("#timesetter.popup #setter #day").value;
     // check inputs
@@ -124,6 +128,6 @@ set_btn.addEventListener("click", function() {
     // reset cat and city animations as necessary
     if (cat.classList.contains("atEnd")) {
         cat.classList.remove("atEnd");
-        city.style.animationPlayState = "running";
+        cat.style.animationIterationCount = "infinite";
     }
 });
