@@ -6,9 +6,11 @@ This is an interactive weather reporting webpage that has an attractive UI where
 My motivation for this project was to learn new concepts and languages by applying them. I wanted to have some fun while doing it, hence why the project's user interface differs a lot from conventional weather reporting applications.
 
 ## Disclaimer
-This is a personal project made for learning purposes, so it is for personal use only.
+This is a personal project made for learning purposes, so it is for personal use only. I will not be responsible for any loss or damage incurred by its use.
 
 I do not own any of the images and sound files stored in the assets folder. All credit goes to their respective owners.
+
+All weather data was recieved from https://www.weatherapi.com/ using an API call.
 
 ## Demo
 
@@ -17,7 +19,7 @@ https://user-images.githubusercontent.com/93227340/230701415-d8520bfa-4bf8-4b93-
 
 
 
-## Accreditations
+## Asset Accreditations
 
 Cat_Animation.png <br />
 Name: Cat Walking Cycle Frame By Frame <br />
@@ -69,3 +71,22 @@ switch.mp3 <br />
 Name: Switch Sound Effect 1 <br />
 License: Free of charge and royalty-free <br />
 Source: https://www.soundjay.com/phone-sounds-2.html <br />
+
+## Tutorial Credits
+Name: Making CSS animations using a sprite sheet
+Author: Hannah Gooding
+Source: https://blog.logrocket.com/making-css-animations-using-a-sprite-sheet/
+
+Name: Snow Falling Animation Using CSS
+Author: Invention Tricks
+Source: https://www.youtube.com/watch?v=IxG5cQCIVE8&t=3s
+
+Name: Popup with blurred background Using CSS3 And Vanilla Javascript | Modal
+Author: Online Tutorials
+Source: https://www.youtube.com/watch?v=snhpoxtLugU
+
+Name: CSS Dropdowns
+Source: https://www.w3schools.com/Css/css_dropdowns.asp
+
+Name: How TO - Glowing Text
+Source: https://www.w3schools.com/howto/howto_css_glowing_text.asp
