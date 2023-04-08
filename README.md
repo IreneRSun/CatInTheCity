@@ -12,53 +12,53 @@ I do not own any of the images and sound files stored in the assets folder. All 
 
 ## Accreditations
 
-Cat_Animation.png
-Name: Cat Walking Cycle Frame By Frame
-License: Creative Commons CC0
-Source: https://www.dlf.pt/ddetail/imwmRow_cat-walking-cycle-frame-by-frame-png-download/
+Cat_Animation.png__
+Name: Cat Walking Cycle Frame By Frame__
+License: Creative Commons CC0__
+Source: https://www.dlf.pt/ddetail/imwmRow_cat-walking-cycle-frame-by-frame-png-download/__
 
-City.png
-Name: Skyline Vector #1924716
-License: Personal Use Only
-Source: http://clipart-library.com/clipart/BTarne7gc.htm
+City.png__
+Name: Skyline Vector #1924716__
+License: Personal Use Only__
+Source: http://clipart-library.com/clipart/BTarne7gc.htm__
 
-Clouds.png
-Name: White Clouds
-License: Personal Use Only
-Source: https://pluspng.com/png-55302.html
+Clouds.png__
+Name: White Clouds__
+License: Personal Use Only__
+Source: https://pluspng.com/png-55302.html__
 
-Fog.png
-Name: Light Fog
-License: Personal Use Only
-Source: http://www.stickpng.com/img/nature/clouds/light-fog
+Fog.png__
+Name: Light Fog__
+License: Personal Use Only__
+Source: http://www.stickpng.com/img/nature/clouds/light-fog__
 
-Hourglass_Icon.png
-Name: Point Of Sale Machine Classic Old Cartoon - Hourglass Sand Timer Clipart
-Author: Viktoria Utazik
-License: Personal Use Only
-Source: https://www.pngitem.com/middle/JxwxRb_point-of-sale-machine-classic-old-cartoon-hourglass/
+Hourglass_Icon.png__
+Name: Point Of Sale Machine Classic Old Cartoon - Hourglass Sand Timer Clipart__
+Author: Viktoria Utazik__
+License: Personal Use Only__
+Source: https://www.pngitem.com/middle/JxwxRb_point-of-sale-machine-classic-old-cartoon-hourglass/__
 
-Manual_Icon.png
-Name: retro cartoon magnifying glass
-License: Shutterstock Standard License
-Source: https://www.shutterstock.com/image-vector/retro-cartoon-magnifying-glass-142516954
+Manual_Icon.png__
+Name: retro cartoon magnifying glass__
+License: Shutterstock Standard License__
+Source: https://www.shutterstock.com/image-vector/retro-cartoon-magnifying-glass-142516954__
 
-Newspaper_Icon.png
-Name: Newspaper Transparent #1525339
-License: Personal Use Only
-Source: http://clipart-library.com/clip-art/newspaper-transparent-20.htm
+Newspaper_Icon.png__
+Name: Newspaper Transparent #1525339__
+License: Personal Use Only__
+Source: http://clipart-library.com/clip-art/newspaper-transparent-20.htm__
 
-page_flip.mp3
-Name: Page Flip Sound Effect 1
-License: Free of charge and royalty-free
-Source: https://www.soundjay.com/page-flip-sounds-1.html
+page_flip.mp3__
+Name: Page Flip Sound Effect 1__
+License: Free of charge and royalty-free__
+Source: https://www.soundjay.com/page-flip-sounds-1.html__
 
-pick_up.mp3
-Name: Phone Pick Up 3
-License: Free of charge and royalty-free
-Source: https://www.soundjay.com/phone-sounds-2.html
+pick_up.mp3__
+Name: Phone Pick Up 3__
+License: Free of charge and royalty-free__
+Source: https://www.soundjay.com/phone-sounds-2.html__
 
-switch.mp3
-Name: Switch Sound Effect 1
-License: Free of charge and royalty-free
-Source: https://www.soundjay.com/phone-sounds-2.html
+switch.mp3__
+Name: Switch Sound Effect 1__
+License: Free of charge and royalty-free__
+Source: https://www.soundjay.com/phone-sounds-2.html__
