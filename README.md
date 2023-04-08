@@ -73,20 +73,20 @@ License: Free of charge and royalty-free <br />
 Source: https://www.soundjay.com/phone-sounds-2.html <br />
 
 ## Tutorial Credits
-Name: Making CSS animations using a sprite sheet
-Author: Hannah Gooding
-Source: https://blog.logrocket.com/making-css-animations-using-a-sprite-sheet/
+Name: Making CSS animations using a sprite sheet <br />
+Author: Hannah Gooding <br />
+Source: https://blog.logrocket.com/making-css-animations-using-a-sprite-sheet/ <br />
 
-Name: Snow Falling Animation Using CSS
-Author: Invention Tricks
-Source: https://www.youtube.com/watch?v=IxG5cQCIVE8&t=3s
+Name: Snow Falling Animation Using CSS <br />
+Author: Invention Tricks <br />
+Source: https://www.youtube.com/watch?v=IxG5cQCIVE8&t=3s <br />
 
-Name: Popup with blurred background Using CSS3 And Vanilla Javascript | Modal
-Author: Online Tutorials
-Source: https://www.youtube.com/watch?v=snhpoxtLugU
+Name: Popup with blurred background Using CSS3 And Vanilla Javascript | Modal <br />
+Author: Online Tutorials <br />
+Source: https://www.youtube.com/watch?v=snhpoxtLugU <br />
 
-Name: CSS Dropdowns
-Source: https://www.w3schools.com/Css/css_dropdowns.asp
+Name: CSS Dropdowns <br />
+Source: https://www.w3schools.com/Css/css_dropdowns.asp <br />
 
-Name: How TO - Glowing Text
-Source: https://www.w3schools.com/howto/howto_css_glowing_text.asp
+Name: How TO - Glowing Text <br />
+Source: https://www.w3schools.com/howto/howto_css_glowing_text.asp <br />
