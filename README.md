@@ -85,6 +85,10 @@ Name: Popup with blurred background Using CSS3 And Vanilla Javascript | Modal <b
 Author: Online Tutorials <br />
 Source: https://www.youtube.com/watch?v=snhpoxtLugU <br />
 
+Name: Centering in CSS: A Complete Guide <br />
+Author: Chris Coyier <br />
+Source: https://css-tricks.com/centering-css-complete-guide/ <br />
+
 Name: CSS Dropdowns <br />
 Source: https://www.w3schools.com/Css/css_dropdowns.asp <br />
 
